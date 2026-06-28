@@ -1,0 +1,96 @@
+{
+  "baseline_accuracy": 0.667,
+  "finetuned_accuracy": 0.733,
+  "improvement": 0.067,
+  "baseline_macro_f1": 0.680,
+  "finetuned_macro_f1": 0.756,
+  "test_set_size": 30,
+  "label_map": {
+    "analysis": 0,
+    "take": 1,
+    "banter": 2
+  },
+  "model": "distilbert-base-uncased",
+  "finetuned_per_class": {
+    "analysis": {
+      "precision": 0.667,
+      "recall": 0.600,
+      "f1-score": 0.632,
+      "support": 10
+    },
+    "take": {
+      "precision": 0.714,
+      "recall": 0.714,
+      "f1-score": 0.714,
+      "support": 14
+    },
+    "banter": {
+      "precision": 0.857,
+      "recall": 1.000,
+      "f1-score": 0.923,
+      "support": 6
+    }
+  },
+  "baseline_per_class": {
+    "analysis": {
+      "precision": 0.625,
+      "recall": 0.500,
+      "f1-score": 0.556,
+      "support": 10
+    },
+    "take": {
+      "precision": 0.714,
+      "recall": 0.714,
+      "f1-score": 0.714,
+      "support": 14
+    },
+    "banter": {
+      "precision": 0.714,
+      "recall": 0.833,
+      "f1-score": 0.769,
+      "support": 6
+    }
+  },
+  "confusion_matrix": {
+    "labels": ["analysis", "take", "banter"],
+    "matrix": [
+      [6, 4, 0],
+      [3, 10, 1],
+      [0, 0, 6]
+    ]
+  },
+  "wrong_predictions": [
+    {
+      "text": "Steph Curry changed the game more than any player since Jordan. The fact that every team now has a designated three-point shooter at every position is his legacy.",
+      "true_label": "take",
+      "predicted": "analysis",
+      "confidence": 0.61
+    },
+    {
+      "text": "Jaylen Brown shot 42% from three last season. The 'he can't shoot' critics are embarrassing.",
+      "true_label": "analysis",
+      "predicted": "take",
+      "confidence": 0.68
+    },
+    {
+      "text": "Jokic's passing is legitimately the best in the history of the center position. No big man has ever seen the floor this well.",
+      "true_label": "take",
+      "predicted": "analysis",
+      "confidence": 0.72
+    }
+  ],
+  "hyperparameters": {
+    "num_train_epochs": 3,
+    "learning_rate": 2e-5,
+    "per_device_train_batch_size": 16,
+    "warmup_ratio": 0.1,
+    "weight_decay": 0.01,
+    "max_sequence_length": 256
+  },
+  "training_history": {
+    "epoch_1_val_accuracy": 0.30,
+    "epoch_2_val_accuracy": 0.30,
+    "epoch_3_val_accuracy": 0.60,
+    "note": "Initial run used warmup_steps=50 which exceeded total training steps (27). Corrected to warmup_ratio=0.1."
+  }
+}
